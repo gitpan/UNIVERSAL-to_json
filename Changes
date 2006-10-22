@@ -1,4 +1,7 @@
 Revision history for Perl extension UNIVERSAL::to_json
 
+  0.02  Sun Oct 22 20:34:07 2006
+        - removed tests using autobox from 01_to_json.t
+
   0.01  Sat Oct 21 03:52:22 2006
         - original version

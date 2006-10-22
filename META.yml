@@ -1,4 +1,4 @@
-abstract: to_json() method for all objects.
+abstract: to_json() method for all objects
 author: Kentaro Kuribayashi <kentaro@cpan.org>
 build_requires: 
   Test::More: 0
@@ -12,4 +12,4 @@ no_index:
     - t
 requires: 
   Best: 0
-version: 0.01
+version: 0.02

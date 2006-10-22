@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Best [qw(JSON::Syck JSON)];
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $loaded; # reserves the module name loaded actually
 
 sub import {
@@ -22,10 +22,9 @@ sub import {
             # XXX
             # Because JSON module ridigly observes JSON specification
             # that specifies that JSON is built on two structures,
-            # hash and ordered list, JSON::objToJson method ignores
-            # both string and a reference to string passed in. So I
-            # hack here to make consistent between JSON and JSON::Syck
-            # implementation.
+            # object and array, JSON::objToJson method ignores scalar
+            # values passed in. So I hack here to make consistent
+            # between JSON and JSON::Syck implementation.
 
             if (ref $self eq 'SCALAR') {
                 my $json =  JSON::objToJson([$$self]);
@@ -70,11 +69,11 @@ __END__
 
 =head1 NAME
 
-UNIVERSAL::to_json - to_json() method for all objects.
+UNIVERSAL::to_json - to_json() method for all objects
 
 =head1 VERSION
 
-This document describes UNIVERSAL::to_json version 0.01
+This document describes UNIVERSAL::to_json version 0.02
 
 =head1 SYNOPSIS
 
@@ -100,15 +99,15 @@ This document describes UNIVERSAL::to_json version 0.01
 
 UNIVERSAL::to_json provides to_json() method to all objects.
 
-Besides, it supports you to extend unblessed values like a scalar, a
-reference to an array and a reference to a hash to be able to be
-called to_json() method from them directly. This feature is optional,
-and owes to brilliant L<autobox>.
+Besides, this module supports you to extend unblessed values like
+scalar, reference to array and reference to hash using brilliant
+L<autobox> module. This feature enables you to call to_json() method
+directly from such values. It is optional.
 
 B<NOTE>: This distribution doesn't designate L<autobox> module as
-pre-required. If you want the feature to be able to add to_json()
-method into unblessed values, you need to install it by your hand in
-advance.
+pre-required. If you want the feature to enable to add to_json()
+method into unblessed values, you need to install L<autobox> by your
+hand in advance.
 
 =head1 METHODS
 
@@ -143,7 +142,7 @@ from unblessed values.
 This method returns which of JSON or JSON::Syck is loaded actually.
 
 So you can recognize which module is loaded and assign some values to
-the package variables privided by the loaded module to set options and
+the package variables provided by the loaded module to set options and
 control outputs from to_json() method.
 
   my $loaded = UNIVERSAL::to_json::which;
@@ -179,8 +178,8 @@ For more details on L<autobox>, consult the documentation of it.
 
 =item * L<JSON>, L<JSON::Syck>
 
-The documentations linked above will help you to know the options that
-enable you to control outputs from to_json() method.
+The documentations of JSON and JSON::Syck will help you to know the
+options that enable you to control outputs from to_json() method.
 
 =back
 
