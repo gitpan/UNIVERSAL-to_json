@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Best [qw(JSON::Syck JSON)];
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 our $loaded; # reserves the module name loaded actually
 
 sub import {
@@ -73,7 +73,7 @@ UNIVERSAL::to_json - to_json() method for all objects
 
 =head1 VERSION
 
-This document describes UNIVERSAL::to_json version 0.02
+This document describes UNIVERSAL::to_json version 0.03
 
 =head1 SYNOPSIS
 

@@ -3,7 +3,7 @@ author: Kentaro Kuribayashi <kentaro@cpan.org>
 build_requires: 
   Test::More: 0
 distribution_type: module
-generated_by: Module::Install version 0.64
+generated_by: Module::Install version 0.63
 license: MIT
 name: UNIVERSAL-to_json
 no_index: 
@@ -12,4 +12,5 @@ no_index:
     - t
 requires: 
   Best: 0
-version: 0.02
+  JSON::Syck: 0
+version: 0.03
